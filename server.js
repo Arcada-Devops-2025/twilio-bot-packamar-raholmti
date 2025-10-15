@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express')
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const bodyParser = require('body-parser');   
 const PORT = 3000
@@ -12,7 +12,7 @@ app.post('/voicecall', (req, res) => {
     twiml.say('Hello')
 
     res.type('text/xml')
-    res.send(twilio.toString())
+    res.send(twiml.toString())
 })
 //Bara för test
 app.get('/voicecall', (req, res) => {
@@ -20,7 +20,7 @@ app.get('/voicecall', (req, res) => {
     twiml.say('Hello')
 
     res.type('text/xml')
-    res.send(twilio.toString())
+    res.send(twiml.toString())
 })
 
 app.listen(PORT, () => {
