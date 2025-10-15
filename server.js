@@ -11,16 +11,16 @@ app.post('/voicecall', (req, res) => {
     const twiml = new VoiceResponse()
     twiml.say('Hello')
 
-    response.type('text/xml')
-    response.send(twilio.toString())
+    res.type('text/xml')
+    res.send(twilio.toString())
 })
 //Bara för test
 app.get('/voicecall', (req, res) => {
     const twiml = new VoiceResponse()
     twiml.say('Hello')
 
-    response.type('text/xml')
-    response.send(twilio.toString())
+    res.type('text/xml')
+    res.send(twilio.toString())
 })
 
 app.listen(PORT, () => {
