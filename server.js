@@ -14,7 +14,7 @@ app.post('/voicecall', (req, res) => {
     res.type('text/xml')
     res.send(twiml.toString())
 })
-//Bara för test
+//Bara för test ...
 app.get('/voicecall', (req, res) => {
     const twiml = new VoiceResponse()
     twiml.say('Hello')
