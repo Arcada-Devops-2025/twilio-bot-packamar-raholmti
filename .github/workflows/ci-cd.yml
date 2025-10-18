@@ -41,9 +41,3 @@ jobs:
           npm install
           pm2 restart twilio-bot || pm2 start server.js --name twilio-bot
 
-    - name: Tag production commits
-      if: github.ref == 'refs/heads/main'
-      run: |
-        TAG="prod-$(date +'%Y-%m-%d')"
-        git tag $TAG
-        git push https://x-access-token:${{ secrets.TAG_TOKEN_WRITE }}@github.com/Arcada-Devops-2025/twilio-bot-packamar-raholmti.git $TAG
