@@ -32,6 +32,10 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         port: 22
         script: |
+          if [ ! -d "/home/ec2-user/twilio-bot" ]; then
+            cd /home/ec2-user
+            git clone https://github.com/Arcada-Devops-2025/twilio-bot-packamar-raholmti twilio-bot
+          fi
           cd /home/ec2-user/twilio-bot
           git pull origin main
           npm install
