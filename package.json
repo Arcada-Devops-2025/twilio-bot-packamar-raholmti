@@ -4,7 +4,7 @@
   "description": "A twilio bot for random dinner ideas",
   "main": "server.js",
   "scripts": {
-    "build": "node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
