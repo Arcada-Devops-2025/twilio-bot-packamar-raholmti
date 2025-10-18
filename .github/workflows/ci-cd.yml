@@ -46,4 +46,4 @@ jobs:
       run: |
         TAG="prod-$(date +'%Y-%m-%d')"
         git tag $TAG
-        git push origin $TAG
+        git push https://x-access-token:${{ secrets.TAG_TOKEN_WRITE }}@github.com/Arcada-Devops-2025/twilio-bot-packamar-raholmti.git $TAG
