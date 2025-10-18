@@ -31,7 +31,12 @@ jobs:
       run: npm run build
 
     - name: Deploy to S3
-      run: aws s3 sync ./dist s3://my-twilio-app-bucket/ --delete
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: us-east-1
+      run: |
+        aws s3 sync ./ s3://twilio-node-app-2025/ --delete
 
     - name: Tag production commits
       if: github.ref == 'refs/heads/main'
