@@ -9,9 +9,11 @@ phases:
     runtime-versions:
       nodejs: 22.8.0
     commands:
-      - npm install
       - curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
       - yum install -y nodejs
+      - npm install
+      - node -v
+      - npm -v
   build:
     commands:
       - npm run build
