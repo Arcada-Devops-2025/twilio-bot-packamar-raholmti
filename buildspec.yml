@@ -1,0 +1,16 @@
+env:
+  variables:
+    NODE_ENV: "production"
+    PORT: "3000"
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22.8.0
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+artifacts:
+  files:
+    - '**/*'
