@@ -53,7 +53,7 @@ app.post('/voicecall', (req, res) => {
 
 app.post('/handle-key', (res, req) => {
     const twiml = new VoiceResponse()
-    const digit = req.body.numDigits
+    const digit = req.body.Digits
     let randomMeal
 
     switch (digit) {
@@ -95,7 +95,7 @@ app.get('/voicecall', (req, res) => {
 
 app.get('/handle-key', (res, req) => {
     const twiml = new VoiceResponse()
-    const digit = req.body.numDigits
+    const digit = req.body.Digits
     let randomMeal
 
     switch (digit) {
