@@ -51,7 +51,7 @@ app.post('/voicecall', (req, res) => {
     res.send(twiml.toString())
 })
 
-app.post('/handle-key', (res, req) => {
+app.post('/handle-key', (req, res) => {
     const twiml = new VoiceResponse()
     const digit = req.body.Digits
     let randomMeal
@@ -93,7 +93,7 @@ app.get('/voicecall', (req, res) => {
     res.send(twiml.toString())
 })
 
-app.get('/handle-key', (res, req) => {
+app.get('/handle-key', (req, res) => {
     const twiml = new VoiceResponse()
     const digit = req.body.Digits
     let randomMeal
