@@ -1,4 +1,1 @@
-test('Server should respond with Hello', () => {
-  const responseText = 'Hello';
-  expect(responseText).toBe('Hello');
-});
+//here the tests will be
