@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/voicecall', (req, res) => {
     const twiml = new VoiceResponse()
-    twiml.say('Hello')
+    twiml.say('Hello!!')
 
     res.type('text/xml')
     res.send(twiml.toString())
@@ -18,7 +18,7 @@ app.post('/voicecall', (req, res) => {
 //Bara för test ...
 app.get('/voicecall', (req, res) => {
     const twiml = new VoiceResponse()
-    twiml.say('Hello')
+    twiml.say('Hello!')
 
     res.type('text/xml')
     res.send(twiml.toString())

@@ -1,0 +1,43 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22.8.0'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
+        script: |
+          if [ ! -d "/home/ec2-user/twilio-bot" ]; then
+            cd /home/ec2-user
+            git clone https://github.com/Arcada-Devops-2025/twilio-bot-packamar-raholmti twilio-bot
+          fi
+          cd /home/ec2-user/twilio-bot
+          git pull origin main
+          npm install
+          pm2 restart twilio-bot || pm2 start server.js --name twilio-bot
+
