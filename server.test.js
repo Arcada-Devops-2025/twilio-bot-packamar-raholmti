@@ -13,10 +13,7 @@ describe('Twilio Dinner Bot', () => {
 
 //gather-test
     it('POST /voicecall should return a Gather TwiML', async () => {
-        const res = await request(app)
-            .post('/voicecall')
-            .send()
-
+        const res = await request(app).post('/voicecall')
         expect(res.status).toBe(200)
         expect(res.type).toBe('text/xml')
         expect(res.text).toContain('<Gather')
@@ -30,7 +27,6 @@ describe('Twilio Dinner Bot', () => {
             .send({ Digits: '1' })
 
         expect(res.status).toBe(200)
-        const matched = vegetarianMeals.some(meal => res.text.includes(meal))
-        expect(matched).toBe(true)
+        expect(vegetarianMeals.some(meal => res.text.includes(meal))).toBe(true)
     })
 })
