@@ -65,6 +65,7 @@ app.post('/handle-key', (req, res) => {
             break
         case '3':
             randomMeal = getRandomMeal(fishMeals)
+            break
         default:
             twiml.say('Sorry that is not a valid option. Try again!')
             twiml.redirect('/voicecall')
@@ -92,33 +93,6 @@ app.get('/voicecall', (req, res) => {
     res.type('text/xml')
     res.send(twiml.toString())
 })
-
-app.get('/handle-key', (req, res) => {
-    const twiml = new VoiceResponse()
-    const digit = req.body.Digits
-    let randomMeal
-
-    switch (digit) {
-        case '1':
-            randomMeal = getRandomMeal(vegetarianMeals)
-            break
-        case '2':
-            randomMeal = getRandomMeal(meatMeals)
-            break
-        case '3':
-            randomMeal = getRandomMeal(fishMeals)
-        default:
-            twiml.say('Sorry that is not a valid option. Try again!')
-            twiml.redirect('/voicecall')
-            return res.send(twiml.toString())
-    }
-
-    twiml.say(`Here is your meal suggestion: ${randomMeal}`)
-    twiml.hangup()
-    res.type('text/xml')
-    res.send(twiml.toString())
-})
-
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`)
