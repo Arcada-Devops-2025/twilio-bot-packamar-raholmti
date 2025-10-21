@@ -1,11 +1,11 @@
 //here the tests will be
-
 const request = require('supertest')
+//import the arrays and functions
 const { app, getRandomMeal, vegetarianMeals, meatMeals, fishMeals } = require('./server')
 
 describe('Twilio Dinner Bot', () => {
 
-//getRandomMeal-test
+//looking for getRandomMeal to return a dinner from the array
     it('getRandomMeal should return an item from the array', () => {
         const meal = getRandomMeal(vegetarianMeals)
         expect(vegetarianMeals).toContain(meal)
