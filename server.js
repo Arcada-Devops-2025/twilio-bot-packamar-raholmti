@@ -97,3 +97,5 @@ app.get('/voicecall', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`)
 })
+
+module.exports = { app, getRandomMeal, vegetarianMeals, meatMeals, fishMeals }
