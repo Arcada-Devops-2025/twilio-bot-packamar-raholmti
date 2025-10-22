@@ -27,6 +27,18 @@ jobs:
     - name: Jest test
       run: npm test
 
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.8.5 
+
+    - name: Validate Terraform
+      run: |
+        cd infra
+        terraform init -backend=false
+        terraform validate
+
     - name: Deploy to EC2
       if: ${{ success() }}
       uses: appleboy/ssh-action@v0.1.5
