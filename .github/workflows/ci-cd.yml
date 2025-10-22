@@ -56,4 +56,14 @@ jobs:
           git pull origin main
           npm install
           pm2 restart twilio-bot || pm2 start server.js --name twilio-bot
+    - name: Tag production commits
+      if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.TAG_TOKEN_WRITE }}
+      run: |
+        TAG="prod-$(date +'%Y-%m-%d')"
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        git tag $TAG
+        git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} $TAG
 
