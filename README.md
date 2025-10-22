@@ -8,5 +8,5 @@ The pipeline runs in Github Actions on commits/merges to main branch and the bot
 The project includes a Terraform file that defines an imaginary AWS S3 bucket with access permissions and a lifecycle policy.
 File: `infra/main.tf`
 
-#
-Route: http://ec2-3-85-143-252.compute-1.amazonaws.com/voicecall
+# Route
+http://ec2-3-85-143-252.compute-1.amazonaws.com/voicecall
