@@ -27,6 +27,9 @@ jobs:
     - name: Jest test
       run: npm test
 
+    - name: Validate Terraform
+      run: terraform validate
+
     - name: Deploy to EC2
       if: ${{ success() }}
       uses: appleboy/ssh-action@v0.1.5
