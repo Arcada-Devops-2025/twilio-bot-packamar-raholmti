@@ -9,13 +9,19 @@ provider "aws" {
 #Our S3-bucket 
 resource "aws_s3_bucket" "twilio_bot"{
     bucket = "my-twilio-bucket"
-    acl = "private"
 
     tags = {
         Name        = "Bucket"
         Environment = "production"
     }
 }
+
+# ACL (access control)
+resource "aws_s3_bucket_acl" "twilio_bot_acl" {
+  bucket = aws_s3_bucket.twilio_bot.id
+  acl    = "private"
+}
+
 # Lifecycle policy (remove old files)
 resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
   bucket = aws_s3_bucket.twilio_bot.id
