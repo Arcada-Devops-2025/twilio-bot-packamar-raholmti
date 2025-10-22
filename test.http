@@ -1,0 +1,5 @@
+### Simulate pressing "1"
+POST http://ec2-3-85-143-252.compute-1.amazonaws.com/handle-key
+Content-Type: application/x-www-form-urlencoded
+
+Digits=3

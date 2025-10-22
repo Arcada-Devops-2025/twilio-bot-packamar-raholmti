@@ -24,7 +24,23 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Jest test
+      run: npm test
+
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.8.5 
+
+    - name: Validate Terraform
+      run: |
+        cd infra
+        terraform init -backend=false
+        terraform validate
+
     - name: Deploy to EC2
+      if: ${{ success() }}
       uses: appleboy/ssh-action@v0.1.5
       with:
         host: ${{ secrets.EC2_HOST }}
@@ -41,9 +57,3 @@ jobs:
           npm install
           pm2 restart twilio-bot || pm2 start server.js --name twilio-bot
 
-    - name: Tag production commits
-      if: github.ref == 'refs/heads/main'
-      run: |
-        TAG="prod-$(date +'%Y-%m-%d')"
-        git tag $TAG
-        git push https://x-access-token:${{ secrets.TAG_TOKEN_WRITE }}@github.com/Arcada-Devops-2025/twilio-bot-packamar-raholmti.git $TAG
