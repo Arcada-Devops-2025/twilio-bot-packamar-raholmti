@@ -45,7 +45,7 @@ app.post('/voicecall', (req, res) => {
         method: 'POST'
     })
 
-    gather.say('Hello! This is a random dinner bot. Press 1 if you want a vegetarian option, press 2 if you want an option with meat and 3 if you want something with fish or seafood.')
+    gather.say('Hello!! This is a random dinner bot. Press 1 if you want a vegetarian option, press 2 if you want an option with meat and 3 if you want something with fish or seafood.')
 
     res.type('text/xml')
     res.send(twiml.toString())
