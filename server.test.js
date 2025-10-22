@@ -1,4 +1,3 @@
-//here the tests will be
 const request = require('supertest')
 //import the arrays and functions
 const { app, getRandomMeal, vegetarianMeals } = require('./server')
